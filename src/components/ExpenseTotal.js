@@ -1,17 +1,14 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-
-const CartValue = () => {
-    const { expenses, Location } = useContext(AppContext);
+const ExpenseTotal = () => {
+    const { expenses } = useContext(AppContext);
     const totalExpenses = expenses.reduce((total, item) => {
-        return (total += (item.unitprice * item.quantity));
+        return (total += item.cost);
     }, 0);
-
     return (
         <div className='alert alert-primary'>
-            <span>Spent So Far: {Location}{totalExpenses}</span>
+            <span>Spent so far: £{totalExpenses}</span>
         </div>
     );
 };
-
-export default CartValue;
+export default ExpenseTotal;
